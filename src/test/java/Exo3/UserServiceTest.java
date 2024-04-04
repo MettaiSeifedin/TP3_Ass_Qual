@@ -1,4 +1,4 @@
-package Exo2;
+package Exo3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,8 @@ public class UserServiceTest {
         Utilisateur utilisateur = new Utilisateur("Jean", "Dupont", "jeandupont@email.com");
 // TODO : Configuration du comportement du mock, utiliser la
 //directive « when » avec sa méthode « thenReturn »
-        when(utilisateurApiMock.creerUtilisateur(utilisateur)).thenReturn(1);
+
+        doThrow(new ServiceException("Echec de la création de l'utilisateur")).when(utilisateurApiMock).creerUtilisateur(utilisateur);
 // ...
 // TODO : Création du service avec le mock
         UserService userService = new UserService(utilisateurApiMock);
